@@ -74,6 +74,7 @@ sources = files(
     'audio/out/ao_lavc.c',
     'audio/out/ao_null.c',
     'audio/out/ao_pcm.c',
+    'audio/out/ao_tap.c',
     'audio/out/buffer.c',
 
     ## Core

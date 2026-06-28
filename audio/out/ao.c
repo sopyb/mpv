@@ -55,6 +55,7 @@ extern const struct ao_driver audio_out_pcm;
 extern const struct ao_driver audio_out_lavc;
 extern const struct ao_driver audio_out_sdl;
 extern const struct ao_driver audio_out_aaudio;
+extern const struct ao_driver audio_out_tap;
 
 static const struct ao_driver * const audio_out_drivers[] = {
 // native:
@@ -108,6 +109,7 @@ static const struct ao_driver * const audio_out_drivers[] = {
 #if HAVE_COREAUDIO
     &audio_out_coreaudio_exclusive,
 #endif
+    &audio_out_tap,
     &audio_out_pcm,
     &audio_out_lavc,
 };
