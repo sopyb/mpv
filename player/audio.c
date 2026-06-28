@@ -29,6 +29,7 @@
 #include "options/options.h"
 #include "common/common.h"
 #include "osdep/timer.h"
+#include "osdep/terminal.h"
 
 #include "audio/format.h"
 #include "audio/out/ao.h"
@@ -446,6 +447,11 @@ static int reinit_audio_filters_and_output(struct MPContext *mpctx)
     mpctx->ao = ao_init_best(mpctx->global, ao_flags, mp_wakeup_core_cb,
                              mpctx, mpctx->encode_lavc_ctx, out_rate,
                              out_format, out_channels);
+
+    if (mpctx->ao && !mpctx->terminal_getch_setup && mpctx->opts->consolecontrols) {
+        terminal_setup_getch(mpctx->input);
+        mpctx->terminal_getch_setup = true;
+    }
 
     int ao_rate = 0;
     int ao_format = 0;
